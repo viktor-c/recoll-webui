@@ -77,6 +77,7 @@ FIELDS = [
     'snippet',
     'label',
 ]
+recoll_config_path =''
 #}}}
 #{{{  functions
 #{{{  helpers
@@ -105,7 +106,7 @@ def normalise_filename(fn):
 def get_config():
     config = {}
     # get useful things from recoll.conf
-    rclconf = rclconfig.RclConfig()
+    rclconf = rclconfig.RclConfig(recoll_config_path)
     config['confdir'] = rclconf.getConfDir()
     config['dirs'] = [os.path.expanduser(d) for d in
                       shlex.split(rclconf.getConfParam('topdirs'))]
